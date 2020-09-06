@@ -11,19 +11,49 @@ import MapKit
 
 
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var priceArray: [[String]] = [[String]]()
 
     @IBOutlet weak var pricePicker: UIPickerView!
     @IBOutlet weak var mapView: MKMapView!
 
+    
     var priceNum = 0;
     var catNum = 0;
    
+     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+               var annotationView = MKMarkerAnnotationView()
+//               var annotationn = annotation as? Places
+//        guard let annotation = annotation as? Places else {
+//          return nil
+//        }
+       
+
+        let identifier = ""
+//        switch annotation. {
+//                                case "park":
+//                                  color = .red
+//                                case "art":
+//                                  color = .black
+//                                case "musuem":
+//                                   color = .blue
+//                                case "etc":
+//                                   color = .purple
+//                                default:
+//                                   color = .yellow
+//                         }
+                      
+                 annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+               annotationView.glyphTintColor = .black
+               annotationView.clusteringIdentifier = identifier
+            
+//            print(color)
+
+               return annotationView
+           }
     
     func setFilters(){
-        print("print????")
         pricePicker.delegate = self
         pricePicker.dataSource = self
         priceArray = [["all","free","$","$$","$$$","$$$$"],["all","parks", "art","musuem","restuarant","sports"]]
@@ -64,8 +94,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
          
         fetchStadiumsOnMap(places)
     }
-    
-    
     
     
     
@@ -154,21 +182,33 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     
     
-    func fetchStadiumsOnMap(_ stadiums: [Places]) {
-      for stadium in stadiums {
+    func fetchStadiumsOnMap(_ stadiums: [Places])  {
+//        var annotationView = MKMarkerAnnotationView()
+//        let identifier = ""
+//        annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        
+        for stadium in stadiums {
+        print(stadium.catigory, "HI")
         if((stadium.price == priceArray[0][priceNum] || priceArray[0][priceNum] == "all")&&(stadium.catigory == priceArray[1][catNum] || priceArray[1][catNum] == "all")){
+            
+//            annotationView.markerTintColor = stadium.markerTintColor
+            
             let annotations = MKPointAnnotation()
             annotations.title = stadium.title
             annotations.subtitle = stadium.subtitle
             annotations.coordinate = stadium.coordinate
+            annotations.accessibilityHint = stadium.catigory
+//            annotations. = stadium.price
             
     //        annotations. = stadium.markerTintColor
             
             mapView.addAnnotation(annotations)
         }
         }
+//         return annotationView
     }
 }
+
 
 //init screen zoom
 private extension MKMapView {
@@ -184,63 +224,36 @@ private extension MKMapView {
   }
 }
 
-extension ViewController: MKMapViewDelegate {
-//     func mapView(
-//  _ mapView: MKMapView,
-//  viewFor annotation: MKAnnotation
-////  calloutAccessoryControlTapped control: UIControl
-//) ->MKAnnotation? {
-//    if let allPlacesView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
-//        allPlacesView.animatesWhenAdded = true
-//        allPlacesView.titleVisibility = .adaptive
-//        allPlacesView.titleVisibility = .adaptive
-////        allPlacesView.markerTintColor = .purple
-////        allPlacesView.glyphImage = UIImage(named: "pizza")
-//
-//
-//        return allPlacesView as? MKAnnotation
-//
-//    }
-//    return nil
-//    }
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-           var annotationView = MKMarkerAnnotationView()
+class ArtworkMarkerView: MKMarkerAnnotationView {
+  override var annotation: MKAnnotation? {
+    willSet {
+      // 1
+        print("hi")
+      guard let annotation = newValue as? Places else {
+        return
+      }
+        var color = UIColor.systemPink
 
-           guard let annotation = annotation as? Places else {return nil}
-           var identifier = ""
-           var color = UIColor.systemPink
-            switch annotation.catigory {
-               case "park":
-                 color = .red
-               case "art":
-                 color = .black
-               case "musuem":
-                  color = .blue
-               case "etc":
-                  color = .purple
-               default:
-                  color = .yellow
-               }
-           annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-           
-           annotationView.tintColor = color
-           annotationView.markerTintColor = color
-           annotationView.glyphImage = UIImage(named: "pizza")
-           annotationView.glyphTintColor = .yellow
-           annotationView.clusteringIdentifier = identifier
-           return annotationView
-       }
-       
-    
+        switch annotation.accessibilityHint {
+                                     case "park":
+                                       color = .red
+                                     case "art":
+                                       color = .black
+                                     case "musuem":
+                                        color = .blue
+                                     case "etc":
+                                        color = .purple
+                                     default:
+                                        color = .yellow
+                              }
+        print("NO")
+      canShowCallout = true
+      calloutOffset = CGPoint(x: -5, y: 5)
+      rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+
+      // 2
+      markerTintColor = color
+//      glyphImage = artwork.image
+    }
+  }
 }
-
-
-
-
-//extension ViewController : UIPickerViewDataSource,UIPickerViewDelegate{
-//
-//
-//}
-    
-    
