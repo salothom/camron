@@ -6,34 +6,34 @@
 //  Copyright © 2020 SarahThompson. All rights reserved.
 //
 
+
 import Foundation
 import MapKit
+import Contacts
 
 class Places: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
-    var name: String
-    var descript: String
-    var price: String
+    var title: String?
+    var subtitle: String?
+    var price: String?
+    var catigory: String?
 //    var lattitude: CLLocationDegrees
 //    var longtitude: CLLocationDegrees
 
-  init(
-    name: String,
-    descript: String,
-    price: String,
-    coordinate: CLLocationCoordinate2D
-  ) {
-    self.price = price
-    self.descript = descript
-    self.name = name
-    self.coordinate = coordinate
-
-    super.init()
-  }
-
-  var subtitle: String? {
-    return name
-  }
+   init(
+      title: String,
+      subtitle: String,
+      catigory: String,
+      price: String,
+      coordinate: CLLocationCoordinate2D
+    ) {
+      self.price = price
+      self.subtitle = subtitle
     
-   
+      self.catigory = catigory
+      self.title = title
+      self.coordinate = coordinate
+      super.init()
+  
+    }
 }
