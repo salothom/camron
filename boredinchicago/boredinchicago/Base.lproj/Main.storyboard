@@ -12,44 +12,56 @@
             <objects>
                 <viewController interfaceStyle="dark" id="BYZ-38-t0r" customClass="ViewController" customModule="boredinchicago" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAq-is-1vM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="641"/>
+                                <rect key="frame" x="-1" y="-2" width="413" height="588"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ACx-Yy-t3I"/>
                                 </connections>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bored in Chicago" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dWk-DG-eCq">
-                                <rect key="frame" x="0.0" y="632" width="414" height="100"/>
+                                <rect key="frame" x="-1" y="582" width="413" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="43"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDj-Ql-SRq">
-                                <rect key="frame" x="0.0" y="749" width="414" height="113"/>
+                                <rect key="frame" x="-1" y="652" width="413" height="109"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Price               Filter Catigory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cpj-yG-eLw">
-                                <rect key="frame" x="0.0" y="740" width="414" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bored in Chicago" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P7M-SC-suE">
-                                <rect key="frame" x="0.0" y="642" width="414" height="79"/>
+                                <rect key="frame" x="-1" y="592" width="413" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="cartoon-chi-skyline" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-PT-jME">
+                                <rect key="frame" x="20" y="28" width="52" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XhX-ld-SVD" appends="YES" id="kO4-45-66g"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cpj-yG-eLw">
+                                <rect key="frame" x="-1" y="638" width="413" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.25885105133056641" green="0.33910337090492249" blue="0.47060537338256836" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.73241257667541504" green="0.85769742727279663" blue="0.93726897239685059" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="tL3-aG-bZY" appends="YES" id="ZjG-kM-VCo"/>
+                        </connections>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -58,8 +70,115 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="XhX-ld-SVD"/>
+                <swipeGestureRecognizer direction="right" id="tL3-aG-bZY">
+                    <connections>
+                        <segue destination="evF-9Y-9mn" kind="presentation" id="eWu-MP-h9T"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="w76-mb-Bvd">
+            <objects>
+                <viewController id="evF-9Y-9mn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XXz-Av-APU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="camera.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="elj-U3-s3X">
+                                <rect key="frame" x="197" y="301.5" width="184" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="M7l-9D-z9v" appends="YES" id="T5A-JJ-c8E"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="tv.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WLo-iP-mIw">
+                                <rect key="frame" x="48" y="553.5" width="155" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xXm-g1-qwh" appends="YES" id="Ark-5J-SmF"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bored in Chicago Instagram" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4i-xI-xo0">
+                                <rect key="frame" x="37" y="321" width="164" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bored in Chicago TikTok" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVg-Fx-uLT">
+                                <rect key="frame" x="211" y="585" width="157" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bored in Chciago WebPage" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsg-6K-YKx">
+                                <rect key="frame" x="197" y="98" width="164" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="cartoon-chi-skyline" translatesAutoresizingMaskIntoConstraints="NO" id="ruf-Gk-rwY">
+                                <rect key="frame" x="51" y="71" width="149" height="165"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H57-fw-a4g">
+                                <rect key="frame" x="223" y="239" width="112" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="dfkjhbdskfhjbad"/>
+                                <connections>
+                                    <action selector="topclick:" destination="M8O-3E-0rN" eventType="touchUpInside" id="aXC-3A-Tvf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.70558947324752808" green="0.86155062913894653" blue="0.94511324167251587" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="oya-GM-PnM"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HdH-1R-7bT" appends="YES" id="is7-Ts-xYM"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="6qq-9s-HRk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oqb-A6-0fW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="M8O-3E-0rN" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="up" id="HdH-1R-7bT">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" id="dYk-FD-WJt"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="w5B-g0-7J8">
+                    <connections>
+                        <action selector="websiteClicked:" destination="M8O-3E-0rN" id="Aba-yT-2MO"/>
+                        <outlet property="delegate" destination="XXz-Av-APU" id="6mo-PW-yUp"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="M7l-9D-z9v">
+                    <connections>
+                        <action selector="InstaClick:" destination="M8O-3E-0rN" id="eJW-tW-TOC"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="xXm-g1-qwh">
+                    <connections>
+                        <action selector="TikTokClick:" destination="M8O-3E-0rN" id="hJ1-OF-efg"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="872.46376811594212" y="125.89285714285714"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="camera.circle" catalog="system" width="64" height="60"/>
+        <image name="cartoon-chi-skyline" width="744" height="744"/>
+        <image name="tv.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>

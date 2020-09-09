@@ -13,79 +13,85 @@ import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var priceArray: [[String]] = [[String]]()
+    var priceArray: [String] = [String]()
+    let places =  PlaceAnnotations().placesA
 
+    @IBAction func topclick(_ sender: UIButton) {
+         print("papapap")
+    }
+    @IBAction func websiteClicked(_ sender: AnyObject) {
+        print("papapap")
+
+    }
+    
+    @IBAction func InstaClick(_ sender: UIImage) {
+        
+                let appURL = URL(string: "instagram://user?username=bored_in_chicago")!
+                let application = UIApplication.shared
+                
+                if application.canOpenURL(appURL)
+                {
+                    application.open(appURL)
+                }
+                else
+                {
+                    let webURL = URL(string: "https://instagram.com/bored_in_chicago")!
+                    application.open(webURL)
+                }
+        
+    }
+    
+    @IBAction func TikTokClick(_ sender: Any) {
+        print("dklsajfb")
+    }
+    
+    
+    
+    @IBOutlet weak var websiteButton: UIImageView!
+    @IBOutlet weak var instaButton: UIImageView!
+    @IBOutlet weak var tiktokButton: UIImageView!
+    
     @IBOutlet weak var pricePicker: UIPickerView!
     @IBOutlet weak var mapView: MKMapView!
 
     
-    var priceNum = 0;
+//    var priceNum = 0;
     var catNum = 0;
-   
      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-               var annotationView = MKMarkerAnnotationView()
-//               var annotationn = annotation as? Places
-//        guard let annotation = annotation as? Places else {
-//          return nil
-//        }
-       
-
+        var annotationView = MKMarkerAnnotationView()
         let identifier = ""
-//        switch annotation. {
-//                                case "park":
-//                                  color = .red
-//                                case "art":
-//                                  color = .black
-//                                case "musuem":
-//                                   color = .blue
-//                                case "etc":
-//                                   color = .purple
-//                                default:
-//                                   color = .yellow
-//                         }
-                      
-                 annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-               annotationView.glyphTintColor = .black
-               annotationView.clusteringIdentifier = identifier
-            
-//            print(color)
+        annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+        annotationView.markerTintColor = .black
+        annotationView.glyphTintColor = .white
+        annotationView.clusteringIdentifier = identifier
+        annotationView.isDraggable = true
+        annotationView.canShowCallout = true
+//        annotationView.frame = CGRect(x: 0, y: 0, width: 40, height: 550)
+        
+//        annotationView.rightCalloutAccessoryView =
+//
+        let deleteButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
+        deleteButton.frame.size.width = 44
+        deleteButton.frame.size.height = 44
+        
+        deleteButton.backgroundColor = .systemPink
+        annotationView.leftCalloutAccessoryView = deleteButton
+        return annotationView
+        }
+    
 
-               return annotationView
-           }
     
     func setFilters(){
         pricePicker.delegate = self
         pricePicker.dataSource = self
-        priceArray = [["all","free","$","$$","$$$","$$$$"],["all","parks", "art","musuem","restuarant","sports"]]
+        priceArray = ["all","Landmark/Activity", "Art","Food","Park"]
     }
-    
-    
-
-
-    
-    
- 
-    let places = [Places(title: "Lincoln Park", subtitle: "plsdkmark", catigory: "park",price: "free", coordinate: CLLocationCoordinate2D(latitude:  41.9255, longitude: -87.6488)),
-        Places(title: "Stamford Bridge", subtitle: "paldksfmrk",  catigory: "park", price: "$",  coordinate: CLLocationCoordinate2D(latitude:  41.9655,longitude: -87.6428)),
-        Places(title:"The Bean", subtitle: "bean",  catigory: "art", price: "free",coordinate: CLLocationCoordinate2D(latitude:41.8827, longitude: -87.6233)),
-        Places(title:"The Monkey", subtitle: "bean",  catigory: "art", price: "free",coordinate: CLLocationCoordinate2D(latitude:41.8727, longitude: -87.6733)),
-        Places(title:"The TREE", subtitle: "bean",  catigory: "art", price: "$$",coordinate: CLLocationCoordinate2D(latitude:41.9827, longitude: -87.6533)),
-        Places(title: "White Hart Lane", subtitle: "parlsdnjfk",  catigory: "art", price: "free", coordinate: CLLocationCoordinate2D(latitude:  41.9215, longitude: -87.6188)),
-        Places(title: "Olympic Stadium", subtitle: "pdlskfmark",  catigory: "musuem", price: "$$$", coordinate: CLLocationCoordinate2D(latitude:  41.9225, longitude: -87.6458)),
-        Places(title: "Old Trafford", subtitle: "parlsdjknfk",  catigory: "art", price: "$$", coordinate: CLLocationCoordinate2D(latitude:  41.9235, longitude: -87.6438)),
-        Places(title: "Anfield", subtitle: "pasdljkfrk", catigory: "musuem", price: "free", coordinate: CLLocationCoordinate2D(latitude:  41.9215, longitude: -87.6418))
-    
-    ]
-
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-
+    
         setFilters()
-        // Do any additional setup after loading the view.
         checkLocationServices()
         let initialLocation = CLLocation(latitude: 41.8781, longitude: -87.6298)
         
@@ -104,7 +110,6 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     
     ///Location Authorization of User
     let locationManager = CLLocationManager()
-    
     func checkLocationServices() {
       if CLLocationManager.locationServicesEnabled() {
         checkLocationAuthorization()
@@ -126,8 +131,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
        break
       case .authorizedAlways:
        break
-//      @unknown default:
-//        <#fatalError()#>
+
         }
     }
     
@@ -139,32 +143,26 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         case .notDetermined: break
         case .restricted: break
         case .authorizedAlways: break
-//      @unknown default:
-//        <#fatalError()#>
+
         }
     }
     
   
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-           return 2
+           return 1
        }
          
-       func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-           return priceArray[1].count
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+           return priceArray.count
        }
        
-       func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-                if(component == 0){
-                    priceNum = row;
-                }
-                if(component == 1){
-                    catNum = row;
-                }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+                catNum = row;
                 updateAnnotations()
              }
         
-       func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-           return priceArray[component][row]
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+           return priceArray[row]
        }
     
     //Places diaplayed!!!
@@ -175,37 +173,18 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     }
 
     
-   
-    
-    
-    
-    
-    
-    
+
     func fetchStadiumsOnMap(_ stadiums: [Places])  {
-//        var annotationView = MKMarkerAnnotationView()
-//        let identifier = ""
-//        annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        
         for stadium in stadiums {
-        print(stadium.catigory, "HI")
-        if((stadium.price == priceArray[0][priceNum] || priceArray[0][priceNum] == "all")&&(stadium.catigory == priceArray[1][catNum] || priceArray[1][catNum] == "all")){
-            
-//            annotationView.markerTintColor = stadium.markerTintColor
-            
-            let annotations = MKPointAnnotation()
-            annotations.title = stadium.title
-            annotations.subtitle = stadium.subtitle
-            annotations.coordinate = stadium.coordinate
-            annotations.accessibilityHint = stadium.catigory
-//            annotations. = stadium.price
-            
-    //        annotations. = stadium.markerTintColor
-            
-            mapView.addAnnotation(annotations)
+            if((stadium.catigory == priceArray[catNum] || priceArray[catNum] == "all")){
+                let annotations = MKPointAnnotation()
+                annotations.title = stadium.title
+                annotations.subtitle = stadium.subtitle
+                annotations.coordinate = stadium.coordinate
+                annotations.accessibilityHint = stadium.catigory
+                mapView.addAnnotation(annotations)
+            }
         }
-        }
-//         return annotationView
     }
 }
 
@@ -224,36 +203,45 @@ private extension MKMapView {
   }
 }
 
+
+
 class ArtworkMarkerView: MKMarkerAnnotationView {
   override var annotation: MKAnnotation? {
     willSet {
       // 1
-        print("hi")
-      guard let annotation = newValue as? Places else {
+      guard let artwork = newValue as? Places else {
         return
       }
-        var color = UIColor.systemPink
-
-        switch annotation.accessibilityHint {
-                                     case "park":
-                                       color = .red
-                                     case "art":
-                                       color = .black
-                                     case "musuem":
-                                        color = .blue
-                                     case "etc":
-                                        color = .purple
-                                     default:
-                                        color = .yellow
-                              }
-        print("NO")
       canShowCallout = true
       calloutOffset = CGPoint(x: -5, y: 5)
       rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
 
       // 2
-      markerTintColor = color
+      markerTintColor = artwork.markerTintColor
 //      glyphImage = artwork.image
+    }
+  }
+}
+
+class ArtworkView: MKAnnotationView {
+  override var annotation: MKAnnotation? {
+    willSet {
+      guard let artwork = newValue as? Places else {
+        return
+      }
+      canShowCallout = true
+      calloutOffset = CGPoint(x: -5, y: 5)
+      let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 48, height: 48)))
+      mapsButton.setBackgroundImage(#imageLiteral(resourceName: "Map"), for: .normal)
+      rightCalloutAccessoryView = mapsButton
+
+//      image = artwork.image
+      
+      let detailLabel = UILabel()
+      detailLabel.numberOfLines = 0
+      detailLabel.font = detailLabel.font.withSize(12)
+      detailLabel.text = artwork.subtitle
+      detailCalloutAccessoryView = detailLabel
     }
   }
 }
