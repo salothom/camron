@@ -8,7 +8,8 @@
 
 import UIKit
 import MapKit
-
+import SwiftUI
+//import GoogleMobileAds
 
 
 class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -16,40 +17,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     var priceArray: [String] = [String]()
     let places =  PlaceAnnotations().placesA
 
-    @IBAction func topclick(_ sender: UIButton) {
-         print("papapap")
-    }
-    @IBAction func websiteClicked(_ sender: AnyObject) {
-        print("papapap")
 
-    }
-    
-    @IBAction func InstaClick(_ sender: UIImage) {
-        
-                let appURL = URL(string: "instagram://user?username=bored_in_chicago")!
-                let application = UIApplication.shared
-                
-                if application.canOpenURL(appURL)
-                {
-                    application.open(appURL)
-                }
-                else
-                {
-                    let webURL = URL(string: "https://instagram.com/bored_in_chicago")!
-                    application.open(webURL)
-                }
-        
-    }
-    
-    @IBAction func TikTokClick(_ sender: Any) {
-        print("dklsajfb")
-    }
-    
-    
-    
-    @IBOutlet weak var websiteButton: UIImageView!
-    @IBOutlet weak var instaButton: UIImageView!
-    @IBOutlet weak var tiktokButton: UIImageView!
     
     @IBOutlet weak var pricePicker: UIPickerView!
     @IBOutlet weak var mapView: MKMapView!
@@ -82,8 +50,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
 
     
     func setFilters(){
+        if(pricePicker != nil){
         pricePicker.delegate = self
         pricePicker.dataSource = self
+        }
         priceArray = ["all","Landmark/Activity", "Art","Food","Park"]
     }
     
@@ -92,13 +62,17 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         super.viewDidLoad()
     
         setFilters()
-        checkLocationServices()
-        let initialLocation = CLLocation(latitude: 41.8781, longitude: -87.6298)
+        if(mapView != nil){
+            checkLocationServices()
+            let initialLocation = CLLocation(latitude: 41.8781, longitude: -87.6298)
+            
+            mapView.delegate = self
+            mapView.centerToLocation(initialLocation)
+             
+            fetchStadiumsOnMap(places)
+//             Banner()
+        }
         
-        mapView.delegate = self
-        mapView.centerToLocation(initialLocation)
-         
-        fetchStadiumsOnMap(places)
     }
     
     
@@ -245,3 +219,40 @@ class ArtworkView: MKAnnotationView {
     }
   }
 }
+
+
+
+
+//final private class BannerVC: UIViewControllerRepresentable  {
+//
+//    func makeUIViewController(context: Context) -> UIViewController {
+//        let view = GADBannerView(adSize: kGADAdSizeBanner)
+//
+//        let viewController = UIViewController()
+//        view.adUnitID = "ca-app-pub-7285044513738234/2009750970"
+//        view.rootViewController = viewController
+//        viewController.view.addSubview(view)
+//        viewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)
+//        view.load(GADRequest())
+//
+//        return viewController
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+//}
+//
+//struct Banner:View{
+//    var body: some View{
+//        HStack{
+//            Spacer()
+//            BannerVC().frame(width: 320, height: 50, alignment: .center)
+//            Spacer()
+//        }
+//    }
+//}
+//
+//struct Banner_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Banner()
+//    }
+//}
