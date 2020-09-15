@@ -7,8 +7,9 @@
 //
 import UIKit
 import Foundation
+import GoogleMobileAds
 
-class buttonController: UIViewController{
+class buttonController: UIViewController, GADBannerViewDelegate{
     
    
     @IBAction func websiteClicked(_ sender: AnyObject) {
@@ -40,5 +41,21 @@ class buttonController: UIViewController{
             application.open(webURL)
                
     }
+    
+    var bannerView: GADBannerView!
+    
+     var adMobBannerView = GADBannerView()
+//        let ADMOB_BANNER_UNIT_ID = "ca-app-pub-7285044513738234/4325348153"
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            print(":ds.fkhbdsfsdf")
+            bannerView = GADBannerView()
+            bannerView.adSize = kGADAdSizeSmartBannerPortrait
+            bannerView.adUnitID = "ca-app-pub-7285044513738234/4325348153"
+            bannerView.rootViewController = self
+            bannerView.load(GADRequest())
+        }
+    
+  
     
 }

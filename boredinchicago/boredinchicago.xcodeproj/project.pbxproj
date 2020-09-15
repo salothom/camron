@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C392FC152509B70C00AF3EDA /* buttonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392FC142509B70C00AF3EDA /* buttonController.swift */; };
-		C392FC292509C24A00AF3EDA /* Promises-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C392FC1F2509C24A00AF3EDA /* Promises-LICENSE */; };
-		C392FC2A2509C24A00AF3EDA /* NanoPB-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C392FC202509C24A00AF3EDA /* NanoPB-LICENSE */; };
-		C392FC2B2509C24A00AF3EDA /* OpenMeasurement-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C392FC212509C24A00AF3EDA /* OpenMeasurement-LICENSE */; };
-		C392FC2C2509C24A00AF3EDA /* GoogleUtilities-LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C392FC222509C24A00AF3EDA /* GoogleUtilities-LICENSE */; };
 		C3E7EE4C2503D53F00DDE288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E7EE4B2503D53F00DDE288 /* AppDelegate.swift */; };
 		C3E7EE4E2503D53F00DDE288 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E7EE4D2503D53F00DDE288 /* SceneDelegate.swift */; };
 		C3E7EE502503D53F00DDE288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E7EE4F2503D53F00DDE288 /* ViewController.swift */; };
@@ -22,22 +18,13 @@
 		C3E7EE622503F1B200DDE288 /* placesViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E7EE612503F1B200DDE288 /* placesViews.swift */; };
 		C3E7EE642505F05200DDE288 /* menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E7EE632505F05200DDE288 /* menu.storyboard */; };
 		C3E7EE6625085DB700DDE288 /* calloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E7EE6525085DB700DDE288 /* calloutView.xib */; };
+		D9EC7F304817087E435AA668 /* Pods_boredinchicago.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D4714857D6CDD67662BF418 /* Pods_boredinchicago.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14908429317D000036576E0E /* Pods-boredinchicago.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boredinchicago.release.xcconfig"; path = "Target Support Files/Pods-boredinchicago/Pods-boredinchicago.release.xcconfig"; sourceTree = "<group>"; };
+		9D4714857D6CDD67662BF418 /* Pods_boredinchicago.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_boredinchicago.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C392FC142509B70C00AF3EDA /* buttonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonController.swift; sourceTree = "<group>"; };
-		C392FC172509C19300AF3EDA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		C392FC192509C19E00AF3EDA /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		C392FC1C2509C24A00AF3EDA /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
-		C392FC1D2509C24A00AF3EDA /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		C392FC1F2509C24A00AF3EDA /* Promises-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Promises-LICENSE"; sourceTree = "<group>"; };
-		C392FC202509C24A00AF3EDA /* NanoPB-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "NanoPB-LICENSE"; sourceTree = "<group>"; };
-		C392FC212509C24A00AF3EDA /* OpenMeasurement-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OpenMeasurement-LICENSE"; sourceTree = "<group>"; };
-		C392FC222509C24A00AF3EDA /* GoogleUtilities-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "GoogleUtilities-LICENSE"; sourceTree = "<group>"; };
-		C392FC232509C24A00AF3EDA /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
-		C392FC242509C24A00AF3EDA /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		C392FC252509C24A00AF3EDA /* UserMessagingPlatform.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UserMessagingPlatform.framework; sourceTree = "<group>"; };
-		C392FC262509C24A00AF3EDA /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
 		C3E7EE482503D53F00DDE288 /* boredinchicago.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = boredinchicago.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E7EE4B2503D53F00DDE288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3E7EE4D2503D53F00DDE288 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +37,7 @@
 		C3E7EE612503F1B200DDE288 /* placesViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placesViews.swift; sourceTree = "<group>"; };
 		C3E7EE632505F05200DDE288 /* menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = menu.storyboard; sourceTree = "<group>"; };
 		C3E7EE6525085DB700DDE288 /* calloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = calloutView.xib; sourceTree = "<group>"; };
+		D4A48A074B6115DCDAADE6EC /* Pods-boredinchicago.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boredinchicago.debug.xcconfig"; path = "Target Support Files/Pods-boredinchicago/Pods-boredinchicago.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,45 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9EC7F304817087E435AA668 /* Pods_boredinchicago.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C9130CBDE16C0A9991D5AF4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4A48A074B6115DCDAADE6EC /* Pods-boredinchicago.debug.xcconfig */,
+				14908429317D000036576E0E /* Pods-boredinchicago.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C392FC162509C19200AF3EDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C392FC1B2509C24A00AF3EDA /* GoogleMobileAdsSdkiOS-7.65.0 */,
-				C392FC192509C19E00AF3EDA /* AdSupport.framework */,
-				C392FC172509C19300AF3EDA /* StoreKit.framework */,
+				9D4714857D6CDD67662BF418 /* Pods_boredinchicago.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C392FC1B2509C24A00AF3EDA /* GoogleMobileAdsSdkiOS-7.65.0 */ = {
-			isa = PBXGroup;
-			children = (
-				C392FC1C2509C24A00AF3EDA /* nanopb.xcframework */,
-				C392FC1D2509C24A00AF3EDA /* GoogleAppMeasurement.framework */,
-				C392FC1E2509C24A00AF3EDA /* Licenses */,
-				C392FC232509C24A00AF3EDA /* PromisesObjC.xcframework */,
-				C392FC242509C24A00AF3EDA /* GoogleMobileAds.framework */,
-				C392FC252509C24A00AF3EDA /* UserMessagingPlatform.framework */,
-				C392FC262509C24A00AF3EDA /* GoogleUtilities.xcframework */,
-			);
-			path = "GoogleMobileAdsSdkiOS-7.65.0";
-			sourceTree = "<group>";
-		};
-		C392FC1E2509C24A00AF3EDA /* Licenses */ = {
-			isa = PBXGroup;
-			children = (
-				C392FC1F2509C24A00AF3EDA /* Promises-LICENSE */,
-				C392FC202509C24A00AF3EDA /* NanoPB-LICENSE */,
-				C392FC212509C24A00AF3EDA /* OpenMeasurement-LICENSE */,
-				C392FC222509C24A00AF3EDA /* GoogleUtilities-LICENSE */,
-			);
-			path = Licenses;
 			sourceTree = "<group>";
 		};
 		C3E7EE3F2503D53F00DDE288 = {
@@ -105,6 +77,7 @@
 				C3E7EE4A2503D53F00DDE288 /* boredinchicago */,
 				C3E7EE492503D53F00DDE288 /* Products */,
 				C392FC162509C19200AF3EDA /* Frameworks */,
+				1C9130CBDE16C0A9991D5AF4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,9 +114,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3E7EE5C2503D54100DDE288 /* Build configuration list for PBXNativeTarget "boredinchicago" */;
 			buildPhases = (
+				12BDCC30FFF3E1E40520A8F3 /* [CP] Check Pods Manifest.lock */,
 				C3E7EE442503D53F00DDE288 /* Sources */,
 				C3E7EE452503D53F00DDE288 /* Frameworks */,
 				C3E7EE462503D53F00DDE288 /* Resources */,
+				90834713EBD9A31BB77C51BC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,16 +170,54 @@
 				C3E7EE582503D54100DDE288 /* LaunchScreen.storyboard in Resources */,
 				C3E7EE552503D54100DDE288 /* Assets.xcassets in Resources */,
 				C3E7EE6625085DB700DDE288 /* calloutView.xib in Resources */,
-				C392FC2A2509C24A00AF3EDA /* NanoPB-LICENSE in Resources */,
 				C3E7EE532503D53F00DDE288 /* Main.storyboard in Resources */,
-				C392FC292509C24A00AF3EDA /* Promises-LICENSE in Resources */,
-				C392FC2C2509C24A00AF3EDA /* GoogleUtilities-LICENSE in Resources */,
 				C3E7EE642505F05200DDE288 /* menu.storyboard in Resources */,
-				C392FC2B2509C24A00AF3EDA /* OpenMeasurement-LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12BDCC30FFF3E1E40520A8F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-boredinchicago-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90834713EBD9A31BB77C51BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-boredinchicago/Pods-boredinchicago-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-boredinchicago/Pods-boredinchicago-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-boredinchicago/Pods-boredinchicago-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C3E7EE442503D53F00DDE288 /* Sources */ = {
@@ -358,6 +371,7 @@
 		};
 		C3E7EE5D2503D54100DDE288 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4A48A074B6115DCDAADE6EC /* Pods-boredinchicago.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -381,6 +395,7 @@
 		};
 		C3E7EE5E2503D54100DDE288 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14908429317D000036576E0E /* Pods-boredinchicago.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
