@@ -59,6 +59,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     }
     
     var bannerView: GADBannerView!
+    
 
 //    let ADMOB_BANNER_UNIT_ID = "ca-app-pub-7285044513738234/4325348153"
     override func viewDidLoad() {
@@ -77,10 +78,14 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
 
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-7285044513738234/4325348153"
+//        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        ca-app-pub-7285044513738234/4325348153
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
-        bannerView.delegate = self
+//        bannerView.delegate = self
+//        addBannerViewToView(bannerView)
+
     }
     
 
