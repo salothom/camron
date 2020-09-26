@@ -110,6 +110,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         ])
      }
     
+    
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
       print("adViewDidReceiveAd")
       addBannerViewToView(bannerView)
