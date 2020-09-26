@@ -44,9 +44,45 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         deleteButton.frame.size.height = 44
         
         deleteButton.backgroundColor = .systemPink
+//        deleteButton.openURL(annotation.)
+       
         annotationView.leftCalloutAccessoryView = deleteButton
+        
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+        label.text = annotation.subtitle!
+        label.font = UIFont.italicSystemFont(ofSize: 14.0)
+        label.numberOfLines = 0
+        annotationView.detailCalloutAccessoryView = label
+        
+        
         return annotationView
         }
+    
+    
+     func mapView(
+      _ mapView: MKMapView,
+      annotationView view: MKAnnotationView,
+      calloutAccessoryControlTapped control: UIControl
+    ) {
+        
+      print("HIHIHIHADFIH")
+      guard let place = view.annotation as? Places else {
+        print("yes")
+
+        return
+      }
+        print("no")
+
+        let application = UIApplication.shared
+    //    let linkString = place.links as string
+       
+        let webURL = URL(string: place.links)!
+                   application.open(webURL)
+        
+        
+
+    }
     
 
     
@@ -55,7 +91,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         pricePicker.delegate = self
         pricePicker.dataSource = self
         }
-        priceArray = ["all","Landmark/Activity", "Art","Food","Park"]
+        priceArray = ["all","Landmark/Activity", "Art","Bar","Food","Neighborhood","Park"]
     }
     
     var bannerView: GADBannerView!
@@ -191,6 +227,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         }
     }
     
+    
   
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
            return 1
@@ -224,6 +261,8 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
                 let annotations = MKPointAnnotation()
                 annotations.title = stadium.title
                 annotations.subtitle = stadium.subtitle
+//                annotations. = stadium.links
+    
                 annotations.coordinate = stadium.coordinate
                 annotations.accessibilityHint = stadium.catigory
                 mapView.addAnnotation(annotations)
@@ -267,28 +306,28 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
   }
 }
 
-class ArtworkView: MKAnnotationView {
-  override var annotation: MKAnnotation? {
-    willSet {
-      guard let artwork = newValue as? Places else {
-        return
-      }
-      canShowCallout = true
-      calloutOffset = CGPoint(x: -5, y: 5)
-      let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 48, height: 48)))
-      mapsButton.setBackgroundImage(#imageLiteral(resourceName: "Map"), for: .normal)
-      rightCalloutAccessoryView = mapsButton
-
-//      image = artwork.image
-      
-      let detailLabel = UILabel()
-      detailLabel.numberOfLines = 0
-      detailLabel.font = detailLabel.font.withSize(12)
-      detailLabel.text = artwork.subtitle
-      detailCalloutAccessoryView = detailLabel
-    }
-  }
-}
+//class ArtworkView: MKAnnotationView {
+//  override var annotation: MKAnnotation? {
+//    willSet {
+//      guard let artwork = newValue as? Places else {
+//        return
+//      }
+//      canShowCallout = true
+//      calloutOffset = CGPoint(x: -5, y: 5)
+//      let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 48, height: 48)))
+//      mapsButton.setBackgroundImage(#imageLiteral(resourceName: "Map"), for: .normal)
+//      rightCalloutAccessoryView = mapsButton
+//
+////      image = artwork.image
+//
+//      let detailLabel = UILabel()
+//      detailLabel.numberOfLines = 0
+//      detailLabel.font = detailLabel.font.withSize(12)
+//      detailLabel.text = artwork.subtitle
+//      detailCalloutAccessoryView = detailLabel
+//    }
+//  }
+//}
 
 
 
