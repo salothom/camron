@@ -24,6 +24,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var mapView: MKMapView!
 
     
+    
 //    var priceNum = 0;
     var catNum = 0;
      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -35,16 +36,25 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         annotationView.clusteringIdentifier = identifier
         annotationView.isDraggable = true
         annotationView.canShowCallout = true
-//        annotationView.frame = CGRect(x: 0, y: 0, width: 40, height: 550)
-        
-//        annotationView.rightCalloutAccessoryView =
-//
+
         let deleteButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
         deleteButton.frame.size.width = 44
         deleteButton.frame.size.height = 44
         
-        deleteButton.backgroundColor = .systemPink
-//        deleteButton.openURL(annotation.)
+//        deleteButton.backgroundColor = .systemPink
+        
+//        deleteButton.addTarget(annotation, action: "didTapGoogle", for: .allTouchEvents )
+
+
+//        deleteButton.setImage(UIImage(named: "tik"), for: .normal)
+
+//        deleteButton.openURL(annotation.subtitle)
+        for stadium in places {
+            if(annotation.title! == stadium.title!){
+                deleteButton.setImage(UIImage(named: stadium.linkpic), for: .normal)
+//                deleteButton.isTouchInside
+            }
+        }
        
         annotationView.leftCalloutAccessoryView = deleteButton
         
@@ -59,6 +69,8 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         return annotationView
         }
     
+   
+   
     
      func mapView(
       _ mapView: MKMapView,
@@ -66,22 +78,17 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
       calloutAccessoryControlTapped control: UIControl
     ) {
         
-      print("HIHIHIHADFIH")
-      guard let place = view.annotation as? Places else {
-        print("yes")
-
-        return
-      }
-        print("no")
-
+        fetchlinkforclick(places, currentAnt: view.annotation!.title!!)
+    }
+    func fetchlinkforclick(_ stadiums: [Places], currentAnt: String)  {
         let application = UIApplication.shared
-    //    let linkString = place.links as string
-       
-        let webURL = URL(string: place.links)!
-                   application.open(webURL)
-        
-        
+           for stadium in stadiums {
+            if(currentAnt == stadium.title!){
+                let webURL = URL(string: stadium.links)!
+                application.open(webURL)
 
+            }
+        }
     }
     
 
@@ -297,71 +304,13 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
       }
       canShowCallout = true
       calloutOffset = CGPoint(x: -5, y: 5)
-      rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+      let button = UIButton(type: .detailDisclosure)
+//      button.setImage(UIImage(named: "tik"), for: .normal)
 
-      // 2
+      rightCalloutAccessoryView = button
       markerTintColor = artwork.markerTintColor
 //      glyphImage = artwork.image
     }
   }
 }
 
-//class ArtworkView: MKAnnotationView {
-//  override var annotation: MKAnnotation? {
-//    willSet {
-//      guard let artwork = newValue as? Places else {
-//        return
-//      }
-//      canShowCallout = true
-//      calloutOffset = CGPoint(x: -5, y: 5)
-//      let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 48, height: 48)))
-//      mapsButton.setBackgroundImage(#imageLiteral(resourceName: "Map"), for: .normal)
-//      rightCalloutAccessoryView = mapsButton
-//
-////      image = artwork.image
-//
-//      let detailLabel = UILabel()
-//      detailLabel.numberOfLines = 0
-//      detailLabel.font = detailLabel.font.withSize(12)
-//      detailLabel.text = artwork.subtitle
-//      detailCalloutAccessoryView = detailLabel
-//    }
-//  }
-//}
-
-
-
-
-//final private class BannerVC: UIViewControllerRepresentable  {
-//
-//    func makeUIViewController(context: Context) -> UIViewController {
-//        let view = GADBannerView(adSize: kGADAdSizeBanner)
-//
-//        let viewController = UIViewController()
-//        view.adUnitID = "ca-app-pub-7285044513738234/2009750970"
-//        view.rootViewController = viewController
-//        viewController.view.addSubview(view)
-//        viewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)
-//        view.load(GADRequest())
-//
-//        return viewController
-//    }
-//
-//    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-//}
-//
-//struct Banner:View{
-//    var body: some View{
-//        HStack{
-//            Spacer()
-//            BannerVC().frame(width: 320, height: 50, alignment: .center)
-//            Spacer()
-//        }
-//    }
-//}
-//
-//struct Banner_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Banner()
-//    }
-//}
