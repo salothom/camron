@@ -40,19 +40,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         let deleteButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
         deleteButton.frame.size.width = 44
         deleteButton.frame.size.height = 44
-        
-//        deleteButton.backgroundColor = .systemPink
-        
-//        deleteButton.addTarget(annotation, action: "didTapGoogle", for: .allTouchEvents )
 
-
-//        deleteButton.setImage(UIImage(named: "tik"), for: .normal)
-
-//        deleteButton.openURL(annotation.subtitle)
         for stadium in places {
             if(annotation.title! == stadium.title!){
                 deleteButton.setImage(UIImage(named: stadium.linkpic), for: .normal)
-//                deleteButton.isTouchInside
             }
         }
        
@@ -219,6 +210,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
       case .authorizedAlways:
        break
 
+      @unknown default:
+       locationManager.requestWhenInUseAuthorization()
+       mapView.showsUserLocation = true
+        break
         }
     }
     
@@ -231,6 +226,8 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         case .restricted: break
         case .authorizedAlways: break
 
+      @unknown default:
+        break
         }
     }
     
@@ -283,7 +280,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
 private extension MKMapView {
   func centerToLocation(
     _ location: CLLocation,
-    regionRadius: CLLocationDistance = 15000
+    regionRadius: CLLocationDistance = 5500
   ) {
     let coordinateRegion = MKCoordinateRegion(
       center: location.coordinate,

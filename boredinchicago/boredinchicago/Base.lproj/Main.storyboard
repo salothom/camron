@@ -49,6 +49,7 @@
                             <outletCollection property="gestureRecognizers" destination="tL3-aG-bZY" appends="YES" id="ZjG-kM-VCo"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="t5Y-nR-cpM"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mapView" destination="eAq-is-1vM" id="MTY-3p-pyx"/>
@@ -79,7 +80,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="T5v-ur-QB7">
                                 <rect key="frame" x="132" y="356" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <state key="normal" title="Button" image="insta"/>
                                 <connections>
                                     <action selector="InstaClick:" destination="evF-9Y-9mn" eventType="touchUpInside" id="Bdb-vP-hv1"/>
@@ -87,7 +88,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KTj-oo-MS3">
                                 <rect key="frame" x="132" y="198" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <state key="normal" title="Button" image="tik"/>
                                 <connections>
                                     <action selector="TikTokClick:" destination="evF-9Y-9mn" eventType="touchUpInside" id="RKl-Le-dz6"/>
@@ -95,7 +96,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wLC-eU-KVO">
                                 <rect key="frame" x="132" y="50" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <state key="normal" title="Button" image="cartoon-chi-skyline"/>
                                 <connections>
                                     <action selector="websiteClicked:" destination="evF-9Y-9mn" eventType="touchUpInside" id="3do-wY-Orj"/>
