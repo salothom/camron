@@ -34,9 +34,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         annotationView.markerTintColor = .black
         annotationView.glyphTintColor = .white
         annotationView.clusteringIdentifier = identifier
+//        annotationView.displayPriority = MKFeatureDisplayPriority.required
+
         annotationView.isDraggable = true
         annotationView.canShowCallout = true
-
         let deleteButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
         deleteButton.frame.size.width = 44
         deleteButton.frame.size.height = 44
@@ -101,13 +102,14 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     
         setFilters()
         if(mapView != nil){
-            checkLocationServices()
+            
             let initialLocation = CLLocation(latitude: 41.8781, longitude: -87.6298)
             
             mapView.delegate = self
             mapView.centerToLocation(initialLocation)
              
             fetchStadiumsOnMap(places)
+            checkLocationServices()
         }
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
 
@@ -280,7 +282,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
 private extension MKMapView {
   func centerToLocation(
     _ location: CLLocation,
-    regionRadius: CLLocationDistance = 5500
+    regionRadius: CLLocationDistance = 555500
   ) {
     let coordinateRegion = MKCoordinateRegion(
       center: location.coordinate,

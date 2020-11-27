@@ -13,7 +13,7 @@
             <view key="view" contentMode="scaleToFill" id="CwL-vK-Gr3">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <color key="backgroundColor" red="0.064694277940000003" green="0.32682001589999998" blue="0.48237347600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <viewLayoutGuide key="safeArea" id="rfg-js-cTU"/>
             </view>
             <point key="canvasLocation" x="-152" y="45"/>
