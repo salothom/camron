@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app uses location to better show nearby attractions.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses location to better show nearby attractions.</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -15,7 +17,7 @@
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-7285044513738234~1197015146</string>
+	<string>ca-app-pub-3834987627454469~8154899022</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

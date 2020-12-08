@@ -21,25 +21,51 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     var priceArray: [String] = [String]()
     let places =  PlaceAnnotations().placesA
     var catNum = 0;
-    let locationManager = CLLocationManager()
+    let locationManager:CLLocationManager = CLLocationManager()
     private var currentLocation: CLLocation?
 
     
     @IBOutlet weak var pricePicker: UIPickerView!
     @IBOutlet weak var mapView: MKMapView!
 
+    //    let ADMOB_BANNER_UNIT_ID = "ca-app-pub-7285044513738234/4325348153"
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setFilters()
+
+            let initialLocation = CLLocation(latitude: 41.8781, longitude: -87.6298)
+                
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.distanceFilter = kCLDistanceFilterNone
+            locationManager.startUpdatingLocation()
+            mapView.showsUserLocation = true
+            mapView.delegate = self
+            mapView.centerToLocation(initialLocation)
+            fetchStadiumsOnMap(places)
+            bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            addBannerViewToView(bannerView)
+            bannerView.adUnitID = "ca-app-pub-3834987627454469/9276409003"
+            
+    //        ca-app-pub-7285044513738234/4325348153
+            bannerView.rootViewController = self
+            bannerView.load(GADRequest())
+        }
     
     
-//    var priceNum = 0;
+    
+    
      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+       if (annotation.isKind(of: MKUserLocation.self)){
+            return nil
+        }
         var annotationView = MKMarkerAnnotationView()
         let identifier = ""
-        annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+        annotationView = MKMarkerAnnotationView(annotation: annotation
+            , reuseIdentifier: "myPin")
         annotationView.markerTintColor = .black
         annotationView.glyphTintColor = .white
         annotationView.clusteringIdentifier = identifier
-//        annotationView.displayPriority = MKFeatureDisplayPriority.required
-
         annotationView.isDraggable = true
         annotationView.canShowCallout = true
         let deleteButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
@@ -51,17 +77,13 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
                 deleteButton.setImage(UIImage(named: stadium.linkpic), for: .normal)
             }
         }
-       
+
         annotationView.leftCalloutAccessoryView = deleteButton
-        
-        
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
         label.text = annotation.subtitle!
         label.font = UIFont.italicSystemFont(ofSize: 14.0)
         label.numberOfLines = 0
         annotationView.detailCalloutAccessoryView = label
-        
-        
         return annotationView
         }
     
@@ -96,100 +118,6 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         }
         priceArray = ["all","Landmark/Activity", "Art","Bar","Food","Neighborhood","Park"]
     }
-    
-    
-
-//    let ADMOB_BANNER_UNIT_ID = "ca-app-pub-7285044513738234/4325348153"
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setFilters()
-        if(mapView != nil){
-
-            let initialLocation = CLLocation(latitude: 41.8781, longitude: -87.6298)
-            
-            mapView.delegate = self
-            mapView.centerToLocation(initialLocation)
-            mapView.showsUserLocation = true
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-
-             
-            fetchStadiumsOnMap(places)
-            self.mapView.showsUserLocation = true
-
-            checkLocationServices()
-            locationManager.startUpdatingLocation()
-
-        }
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-
-        addBannerViewToView(bannerView)
-//        addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        ca-app-pub-7285044513738234/4325348153
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-//        bannerView.delegate = self
-//        addBannerViewToView(bannerView)
-
-    }
-    
-
-  
-    
-    ///Location Authorization of User
-    func checkLocationServices() {
-      if CLLocationManager.locationServicesEnabled() {
-        checkLocationAuthorization()
-      } else {
-        // Show alert letting the user know they have to turn this on.
-      }
-    }
-    
-    func checkLocationAuthorization() {
-      switch CLLocationManager.authorizationStatus() {
-      case .authorizedWhenInUse:
-        mapView.showsUserLocation = true
-       case .denied: // Show alert telling users how to turn on permissions
-        mapView.showsUserLocation = false
-
-       break
-      case .notDetermined:
-        locationManager.requestWhenInUseAuthorization()
-        mapView.showsUserLocation = true
-        locationManager.startUpdatingLocation()
-      case .restricted: // Show an alert letting them know what’s up
-        mapView.showsUserLocation = false
-
-       break
-      case .authorizedAlways:
-       break
-
-      @unknown default:
-       locationManager.requestWhenInUseAuthorization()
-       mapView.showsUserLocation = true
-        break
-        }
-    }
-    
-    
-    func checkAuthorizationStatus() {
-      switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse: break
-        case .denied: break
-        case .notDetermined: break
-        case .restricted: break
-        case .authorizedAlways: break
-
-      @unknown default:
-        break
-        }
-    }
-    
-    func setupLocationManager() {
-        locationManager.delegate = self as! CLLocationManagerDelegate
-           locationManager.desiredAccuracy = kCLLocationAccuracyBest
-       }
     
   
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -301,7 +229,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
 private extension MKMapView {
   func centerToLocation(
     _ location: CLLocation,
-    regionRadius: CLLocationDistance = 555500
+    regionRadius: CLLocationDistance = 5500
   ) {
     let coordinateRegion = MKCoordinateRegion(
       center: location.coordinate,
