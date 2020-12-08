@@ -10,14 +10,19 @@ import UIKit
 import MapKit
 import SwiftUI
 import GoogleMobileAds
+import CoreLocation
 
 
-class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, GADBannerViewDelegate
+
+class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CLLocationManagerDelegate, GADBannerViewDelegate
  {
-    
+    var bannerView: GADBannerView!
+
     var priceArray: [String] = [String]()
     let places =  PlaceAnnotations().placesA
-
+    var catNum = 0;
+    let locationManager = CLLocationManager()
+    private var currentLocation: CLLocation?
 
     
     @IBOutlet weak var pricePicker: UIPickerView!
@@ -26,7 +31,6 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     
     
 //    var priceNum = 0;
-    var catNum = 0;
      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = MKMarkerAnnotationView()
         let identifier = ""
@@ -93,23 +97,29 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         priceArray = ["all","Landmark/Activity", "Art","Bar","Food","Neighborhood","Park"]
     }
     
-    var bannerView: GADBannerView!
     
 
 //    let ADMOB_BANNER_UNIT_ID = "ca-app-pub-7285044513738234/4325348153"
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         setFilters()
         if(mapView != nil){
-            
+
             let initialLocation = CLLocation(latitude: 41.8781, longitude: -87.6298)
             
             mapView.delegate = self
             mapView.centerToLocation(initialLocation)
+            mapView.showsUserLocation = true
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+
              
             fetchStadiumsOnMap(places)
+            self.mapView.showsUserLocation = true
+
             checkLocationServices()
+            locationManager.startUpdatingLocation()
+
         }
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
 
@@ -125,71 +135,9 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
     }
     
 
-   func addBannerViewToView(_ bannerView: GADBannerView) {
-      bannerView.translatesAutoresizingMaskIntoConstraints = false
-      view.addSubview(bannerView)
-      view.addConstraints(
-        [NSLayoutConstraint(item: bannerView,
-                            attribute: .bottom,
-                            relatedBy: .equal,
-                            toItem: bottomLayoutGuide,
-                            attribute: .top,
-                            multiplier: 1,
-                            constant: 0),
-         NSLayoutConstraint(item: bannerView,
-                            attribute: .centerX,
-                            relatedBy: .equal,
-                            toItem: view,
-                            attribute: .centerX,
-                            multiplier: 1,
-                            constant: 0)
-        ])
-     }
-    
-    
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-      print("adViewDidReceiveAd")
-      addBannerViewToView(bannerView)
-    }
-
-    /// Tells the delegate an ad request failed.
-    func adView(_ bannerView: GADBannerView,
-        didFailToReceiveAdWithError error: GADRequestError) {
-      print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-        
-    }
-
-    /// Tells the delegate that a full-screen view will be presented in response
-    /// to the user clicking on an ad.
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-      print("adViewWillPresentScreen")
-    }
-
-    /// Tells the delegate that the full-screen view will be dismissed.
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-      print("adViewWillDismissScreen")
-    }
-
-    /// Tells the delegate that the full-screen view has been dismissed.
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-      print("adViewDidDismissScreen")
-    }
-
-    /// Tells the delegate that a user click will open another app (such as
-    /// the App Store), backgrounding the current app.
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-      print("adViewWillLeaveApplication")
-    }
-
-    
-    
-    override func didReceiveMemoryWarning() {
-           super.didReceiveMemoryWarning()
-           // Dispose of any resources that can be recreated.
-       }
+  
     
     ///Location Authorization of User
-    let locationManager = CLLocationManager()
     func checkLocationServices() {
       if CLLocationManager.locationServicesEnabled() {
         checkLocationAuthorization()
@@ -203,11 +151,16 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
       case .authorizedWhenInUse:
         mapView.showsUserLocation = true
        case .denied: // Show alert telling users how to turn on permissions
+        mapView.showsUserLocation = false
+
        break
       case .notDetermined:
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
+        locationManager.startUpdatingLocation()
       case .restricted: // Show an alert letting them know what’s up
+        mapView.showsUserLocation = false
+
        break
       case .authorizedAlways:
        break
@@ -233,6 +186,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
         }
     }
     
+    func setupLocationManager() {
+        locationManager.delegate = self as! CLLocationManagerDelegate
+           locationManager.desiredAccuracy = kCLLocationAccuracyBest
+       }
     
   
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -263,18 +220,80 @@ class ViewController: UIViewController, MKMapViewDelegate, UIPickerViewDataSourc
 
     func fetchStadiumsOnMap(_ stadiums: [Places])  {
         for stadium in stadiums {
-            if((stadium.catigory == priceArray[catNum] || priceArray[catNum] == "all")){
+            if((stadium.category == priceArray[catNum] || priceArray[catNum] == "all")){
                 let annotations = MKPointAnnotation()
                 annotations.title = stadium.title
                 annotations.subtitle = stadium.subtitle
 //                annotations. = stadium.links
     
                 annotations.coordinate = stadium.coordinate
-                annotations.accessibilityHint = stadium.catigory
+                annotations.accessibilityHint = stadium.category
                 mapView.addAnnotation(annotations)
             }
         }
     }
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+         bannerView.translatesAutoresizingMaskIntoConstraints = false
+         view.addSubview(bannerView)
+         view.addConstraints(
+           [NSLayoutConstraint(item: bannerView,
+                               attribute: .bottom,
+                               relatedBy: .equal,
+                               toItem: bottomLayoutGuide,
+                               attribute: .top,
+                               multiplier: 1,
+                               constant: 0),
+            NSLayoutConstraint(item: bannerView,
+                               attribute: .centerX,
+                               relatedBy: .equal,
+                               toItem: view,
+                               attribute: .centerX,
+                               multiplier: 1,
+                               constant: 0)
+           ])
+        }
+       
+       
+       func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+         print("adViewDidReceiveAd")
+         addBannerViewToView(bannerView)
+       }
+
+       /// Tells the delegate an ad request failed.
+       func adView(_ bannerView: GADBannerView,
+           didFailToReceiveAdWithError error: GADRequestError) {
+         print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+           
+       }
+
+       /// Tells the delegate that a full-screen view will be presented in response
+       /// to the user clicking on an ad.
+       func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+         print("adViewWillPresentScreen")
+       }
+
+       /// Tells the delegate that the full-screen view will be dismissed.
+       func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+         print("adViewWillDismissScreen")
+       }
+
+       /// Tells the delegate that the full-screen view has been dismissed.
+       func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+         print("adViewDidDismissScreen")
+       }
+
+       /// Tells the delegate that a user click will open another app (such as
+       /// the App Store), backgrounding the current app.
+       func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+         print("adViewWillLeaveApplication")
+       }
+
+       
+       
+       override func didReceiveMemoryWarning() {
+              super.didReceiveMemoryWarning()
+              // Dispose of any resources that can be recreated.
+          }
 }
 
 
